@@ -77,4 +77,15 @@ class PageController extends Controller
     public function showContact(){
         return view('contact');
     }
+
+    public function submitContact(Request $request)
+    {
+        $data = $request->all();
+        return redirect()->route('contact.result')->with('data', $data);
+    }
+
+    public function showResult()
+    {
+        return view('contact-result');
+    }
 }

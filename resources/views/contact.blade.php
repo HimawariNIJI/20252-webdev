@@ -14,24 +14,25 @@
                             <p class="mb-0 text-white-50">Have a question or want to book? Send us a message!</p>
                         </div>
                         <div class="card-body p-4 p-md-5 bg-white">
-                            <!-- Needs to be converted to Laravel form by students -->
-                            <form action="#" method="POST">
+                            <form action="{{ route('contact.submit') }}" method="POST">
+                                @csrf
+                                
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control focus-ring" id="nameInput" placeholder="John Doe" required>
+                                            <input type="text" name="name" class="form-control focus-ring" id="nameInput" placeholder="John Doe" required>
                                             <label for="nameInput">Full Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control focus-ring" id="emailInput" placeholder="name@example.com" required>
+                                            <input type="email" name="email" class="form-control focus-ring" id="emailInput" placeholder="name@example.com" required>
                                             <label for="emailInput">Email Address</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-3">
-                                            <select class="form-select focus-ring" id="packageSelect" aria-label="Select Package">
+                                            <select class="form-select focus-ring" name="package" id="packageSelect" aria-label="Select Package">
                                                 <option selected disabled>Select a package (Optional)</option>
                                                 <option value="1">Basic Snap</option>
                                                 <option value="2">Premium Joy</option>
@@ -42,7 +43,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating mb-4">
-                                            <textarea class="form-control focus-ring" placeholder="Leave a message here" id="messageInput" style="height: 150px" required></textarea>
+                                            <textarea class="form-control focus-ring" name="message" placeholder="Leave a message here" id="messageInput" style="height: 150px" required></textarea>
                                             <label for="messageInput">Your Message & Event Details</label>
                                         </div>
                                     </div>

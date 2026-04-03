@@ -10,3 +10,5 @@ Route::get('/about', [PageController::class, 'showAbout'])->name('about');
 Route::get('/services', [PageController::class, 'showServices'])->name('services');
 
 Route::get('/contact', [PageController::class, 'showContact'])->name('contact');
+Route::post('/contact', [PageController::class, 'submitContact'])->name('contact.submit');
+Route::get('/contact-result', [PageController::class, 'showResult'])->name('contact.result');
