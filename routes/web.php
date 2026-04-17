@@ -15,3 +15,13 @@ Route::post('/contact', [PageController::class, 'submitContact'])->name('contact
 Route::get('/contact-result', [PageController::class, 'showResult'])->name('contact.result');
 
 Route::get('/store', [StoreController::class, 'show'])->name('store');
+
+Route::get('/product/insert-form', [StoreController::class, 'product_insert_form'])->name('product_insert_form');
+
+Route::post('/product/insert', [StoreController::class, 'insert_product'])->name('insert_product');
+
+Route::get('/product/edit/{product:id}', [StoreController::class, 'product_edit_form'])->name('product_edit_form');
+
+Route::put('/product/update/{product:id}', [StoreController::class, 'update_product'])->name('update_product');
+
+Route::delete('/product/delete/{product:id}', [StoreController::class, 'delete_product'])->name('delete_product');
