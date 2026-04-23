@@ -1,4 +1,4 @@
-@extends('base.base2')
+@extends('base.base')
 
 @section('content')
     <div class="container my-5 mx-auto">

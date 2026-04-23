@@ -1,4 +1,4 @@
-@extends('base.base2')
+@extends('base.base')
  
 @section('content')
     <h1>Insert New Product</h1>

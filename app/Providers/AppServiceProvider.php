@@ -26,5 +26,12 @@ class AppServiceProvider extends ServiceProvider
                 return $user->roles()->whereIn('role', ['admin', 'owner'])->exists();
             });
         }
+
+        $customerAbilities = ['add-to-cart', 'view-cart'];
+        foreach ($customerAbilities as $ability) {
+            Gate::define($ability, function ($user) {
+                return $user->roles()->where('role', 'customer')->exists();
+            });
+        }
     }
 }
