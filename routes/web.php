@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,8 @@ Route::middleware('auth')->group(function(){
 
     Route::middleware(['role:customer,admin,owner'])->group(function(){
         Route::get('/store', [StoreController::class, 'show'])->name('store');
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+        Route::get('/order/{order_id}', [OrderController::class, 'order_details'])->name('order_details');
     });
 
     Route::middleware(['role:customer'])->group(function(){
@@ -36,5 +39,7 @@ Route::middleware('auth')->group(function(){
         Route::patch('/update-cart/{product_id}', [StoreController::class, 'update_cart'])->name('update_cart');
         Route::delete('/remove-from-cart/{product_id}', [StoreController::class, 'remove_from_cart'])->name('remove_from_cart');
         Route::post('/checkout', [StoreController::class, 'checkout'])->name('checkout');
+        Route::get('/payment/return/{order_id}', [StoreController::class, 'payment_return'])->name('payment_return');
+        Route::get('/payment/status/{order_id}', [StoreController::class, 'payment_status'])->name('payment_status');
     });
 });
